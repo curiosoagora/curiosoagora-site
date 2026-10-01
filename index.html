@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Curiosidades, tecnologia, carros, motos, jogos e fatos incríveis em um só lugar.">
+<title>Curioso Agora — Descubra algo novo</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#172033;line-height:1.5}
+header{background:linear-gradient(135deg,#111827,#2563eb);color:#fff;padding:22px 6%;position:sticky;top:0;z-index:5}
+.nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-size:1.45rem;font-weight:800}
+nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:.95rem}
+.hero{max-width:1100px;margin:0 auto;padding:58px 6% 35px}
+.badge{display:inline-block;background:#dbeafe;color:#1d4ed8;padding:7px 12px;border-radius:999px;font-weight:700;font-size:.8rem;margin-bottom:14px}
+h1{font-size:clamp(2rem,6vw,4rem);line-height:1.05;max-width:760px}
+.hero p{max-width:650px;color:#526078;margin:18px 0 25px;font-size:1.08rem}
+.search{display:flex;max-width:650px;gap:8px}
+.search input{flex:1;padding:14px 16px;border:1px solid #d6dce7;border-radius:12px;font-size:1rem}
+.search button{border:0;border-radius:12px;padding:0 20px;background:#2563eb;color:#fff;font-weight:700}
+main{max-width:1100px;margin:auto;padding:10px 6% 60px}
+.section-title{margin:25px 0 16px;font-size:1.45rem}
+.categories{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:28px}
+.cat{border:1px solid #d9dfeb;background:#fff;border-radius:999px;padding:9px 14px;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:20px;box-shadow:0 6px 22px rgba(15,23,42,.05)}
+.icon{font-size:2rem;margin-bottom:12px}
+.card small{color:#64748b;font-weight:700}
+.card h3{margin:7px 0;font-size:1.15rem}
+.card p{color:#5b667a;font-size:.95rem}
+.card a{display:inline-block;margin-top:13px;color:#2563eb;font-weight:700;text-decoration:none}
+.ad{margin:30px 0;border:2px dashed #cbd5e1;border-radius:16px;padding:25px;text-align:center;color:#718096;background:#f8fafc}
+footer{background:#111827;color:#cbd5e1;text-align:center;padding:30px 6%;font-size:.9rem}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){header{padding:18px 5%}nav{display:none}.hero{padding:40px 5% 25px}main{padding:10px 5% 45px}.grid{grid-template-columns:1fr}.search{flex-direction:column}.search button{height:48px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="logo">🔎 Curioso Agora</div>
+    <nav><a href="#inicio">Início</a><a href="#categorias">Categorias</a><a href="#artigos">Artigos</a></nav>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <span class="badge">NOVO PORTAL</span>
+  <h1>Descubra algo novo todos os dias.</h1>
+  <p>Curiosidades, tecnologia, carros, motos, jogos e fatos interessantes em textos rápidos e fáceis de compartilhar.</p>
+  <div class="search">
+    <input id="search" type="search" placeholder="O que você quer descobrir?">
+    <button onclick="buscar()">Buscar</button>
+  </div>
+</section>
+
+<main>
+  <h2 class="section-title" id="categorias">Categorias</h2>
+  <div class="categories">
+    <button class="cat" onclick="filtrar('Todos')">Todos</button>
+    <button class="cat" onclick="filtrar('Curiosidades')">🤯 Curiosidades</button>
+    <button class="cat" onclick="filtrar('Carros')">🚗 Carros</button>
+    <button class="cat" onclick="filtrar('Tecnologia')">📱 Tecnologia</button>
+    <button class="cat" onclick="filtrar('Jogos')">🎮 Jogos</button>
+  </div>
+
+  <div class="ad">ESPAÇO PARA ANÚNCIO<br><small>Será substituído por uma plataforma de anúncios quando o site estiver aprovado para monetização.</small></div>
+
+  <h2 class="section-title" id="artigos">Conteúdos em destaque</h2>
+  <div class="grid" id="cards">
+    <article class="card" data-cat="Curiosidades">
+      <div class="icon">🤯</div><small>CURIOSIDADES</small>
+      <h3>7 fatos que parecem mentira, mas são verdade</h3>
+      <p>Uma seleção de fatos curiosos para testar seus conhecimentos.</p>
+      <a href="#">Ler artigo →</a>
+    </article>
+    <article class="card" data-cat="Carros">
+      <div class="icon">🚗</div><small>CARROS</small>
+      <h3>Por que alguns carros têm nomes tão diferentes?</h3>
+      <p>Descubra de onde vêm alguns nomes famosos do mundo automotivo.</p>
+      <a href="#">Ler artigo →</a>
+    </article>
+    <article class="card" data-cat="Tecnologia">
+      <div class="icon">📱</div><small>TECNOLOGIA</small>
+      <h3>Como o celular sabe onde você está?</h3>
+      <p>GPS, antenas e outros sistemas trabalham juntos para localizar o aparelho.</p>
+      <a href="#">Ler artigo →</a>
+    </article>
+    <article class="card" data-cat="Jogos">
+      <div class="icon">🎮</div><small>JOGOS</small>
+      <h3>Como os videogames conseguem criar mundos tão grandes?</h3>
+      <p>Uma explicação simples sobre mapas, arquivos e processamento.</p>
+      <a href="#">Ler artigo →</a>
+    </article>
+    <article class="card" data-cat="Curiosidades">
+      <div class="icon">🌎</div><small>CURIOSIDADES</small>
+      <h3>Os lugares mais incomuns do planeta</h3>
+      <p>Conheça ambientes que parecem ter saído de outro mundo.</p>
+      <a href="#">Ler artigo →</a>
+    </article>
+    <article class="card" data-cat="Tecnologia">
+      <div class="icon">💡</div><small>TECNOLOGIA</small>
+      <h3>5 tecnologias que já fazem parte da nossa rotina</h3>
+      <p>Coisas comuns hoje que pareciam futuristas há poucos anos.</p>
+      <a href="#">Ler artigo →</a>
+    </article>
+  </div>
+
+  <div class="ad">ESPAÇO PARA ANÚNCIO</div>
+</main>
+
+<footer>
+  <p>© 2026 Curioso Agora — Conteúdo informativo e entretenimento.</p>
+  <p style="margin-top:8px">Política de Privacidade · Termos de Uso · Contato</p>
+</footer>
+
+<script>
+function filtrar(cat){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.style.display=(cat==='Todos'||c.dataset.cat===cat)?'block':'none';
+  });
+}
+function buscar(){
+  const q=document.getElementById('search').value.toLowerCase().trim();
+  document.querySelectorAll('.card').forEach(c=>{
+    c.style.display=(!q || c.innerText.toLowerCase().includes(q))?'block':'none';
+  });
+}
+document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter')buscar()});
+</script>
+</body>
+</html>
